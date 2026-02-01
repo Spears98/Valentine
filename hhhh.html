@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Valentine's Question 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: 'Georgia', serif;
+        background: linear-gradient(135deg, #ffeef8 0%, #ffe5f0 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .container {
+        text-align: center;
+        padding: 40px;
+        background: white;
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+        max-width: 600px;
+        position: relative;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    h1 {
+        color: #ff1493;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+    }
+
+    .letter-container {
+        margin: 30px 0;
+        position: relative;
+    }
+
+    .letter {
+        width: 200px;
+        height: 250px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+        border-radius: 15px;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .letter::before {
+        content: "💌";
+        font-size: 80px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.3;
+    }
+
+    .letter-text {
+        color: white;
+        font-size: 1.3em;
+        font-weight: bold;
+        text-align: center;
+        z-index: 1;
+        line-height: 1.6;
+    }
+
+    .hearts {
+        font-size: 2em;
+        margin: 20px 0;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .buttons {
+        margin-top: 40px;
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        position: relative;
+        height: 120px;
+    }
+
+    button {
+        padding: 20px 50px;
+        font-size: 1.5em;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #yesBtn {
+        background: linear-gradient(135deg, #ff69b4, #ff1493);
+        color: white;
+    }
+
+    #yesBtn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+    }
+
+    #noBtn {
+        background: linear-gradient(135deg, #e0e0e0, #c0c0c0);
+        color: #666;
+        position: absolute;
+        transition: all 0.15s ease;
+    }
+
+    .success-message {
+        animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.8); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .success-message h2 {
+        color: #ff1493;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .success-message p {
+        color: #666;
+        font-size: 1.3em;
+        line-height: 1.8;
+        margin: 20px 0;
+    }
+
+    .celebration {
+        font-size: 3em;
+        margin: 20px 0;
+        animation: bounce 1s ease infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    .sparkle {
+        position: absolute;
+        pointer-events: none;
+        animation: sparkleFloat 2s ease-out forwards;
+    }
+
+    @keyframes sparkleFloat {
+        0% { opacity: 1; transform: translateY(0) scale(1); }
+        100% { opacity: 0; transform: translateY(-100px) scale(0); }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="container">
+        <div id="question" class="question-screen">
+            <h1>Hello Olina! 💕</h1>
+
+```
+        <div class="letter-container">
+            <div class="letter">
+                <div class="letter-text">Will you be my Valentine? 💝</div>
+            </div>
+        </div>
+
+        <div class="hearts">💕 💖 💗 💕</div>
+
+        <div class="buttons">
+            <button id="yesBtn">Yes! 💕</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div id="success" class="success-message hidden">
+        <div class="celebration">🎉 💕 🎊 💖 🎉</div>
+        <h2>Yay! 💕</h2>
+        <p>You've just made me the happiest person in the world! ✨</p>
+        <p>I can't wait to spend this special day with you, creating beautiful memories together. You make every moment magical! 🌟</p>
+        <p>Happy Valentine's Day, Olina! 💝</p>
+        <p><strong>Love you babe 💕</strong></p>
+        <div class="celebration">💕 💖 💗 💕 💖</div>
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const questionScreen = document.getElementById('question');
+    const successScreen = document.getElementById('success');
+    const container = document.querySelector('.container');
+
+    let noBtnPosition = { x: 0, y: 0 };
+
+    function setInitialNoBtnPosition() {
+        const buttonsContainer = document.querySelector('.buttons');
+        const rect = buttonsContainer.getBoundingClientRect();
+        noBtnPosition.x = rect.width - noBtn.offsetWidth - 30;
+        noBtnPosition.y = (rect.height - noBtn.offsetHeight) / 2;
+        noBtn.style.left = noBtnPosition.x + 'px';
+        noBtn.style.top = noBtnPosition.y + 'px';
+    }
+
+    setInitialNoBtnPosition();
+
+    function moveNoButton(mouseX, mouseY) {
+        const btnRect = noBtn.getBoundingClientRect();
+        const btnCenterX = btnRect.left + btnRect.width / 2;
+        const btnCenterY = btnRect.top + btnRect.height / 2;
+
+        const distance = Math.sqrt(
+            Math.pow(mouseX - btnCenterX, 2) + 
+            Math.pow(mouseY - btnCenterY, 2)
+        );
+
+        const triggerDistance = 150;
+
+        if (distance < triggerDistance) {
+            const buttonsContainer = document.querySelector('.buttons');
+            const containerRect = buttonsContainer.getBoundingClientRect();
+            
+            const maxX = containerRect.width - noBtn.offsetWidth;
+            const maxY = containerRect.height - noBtn.offsetHeight;
+
+            let newX, newY;
+            let attempts = 0;
+            
+            do {
+                newX = Math.random() * maxX;
+                newY = Math.random() * maxY;
+                attempts++;
+            } while (
+                attempts < 10 && 
+                Math.sqrt(Math.pow(newX - noBtnPosition.x, 2) + Math.pow(newY - noBtnPosition.y, 2)) < 100
+            );
+
+            noBtnPosition.x = newX;
+            noBtnPosition.y = newY;
+
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+        }
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        if (!questionScreen.classList.contains('hidden')) {
+            moveNoButton(e.clientX, e.clientY);
+        }
+    });
+
+    noBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        moveNoButton(e.clientX, e.clientY);
+    });
+
+    yesBtn.addEventListener('click', () => {
+        createSparkles();
+        questionScreen.classList.add('hidden');
+        successScreen.classList.remove('hidden');
+    });
+
+    function createSparkles() {
+        const sparkles = ['✨', '💕', '💖', '💗', '⭐', '🌟'];
+        for (let i = 0; i < 30; i++) {
+            setTimeout(() => {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 2000);
+            }, i * 100);
+        }
+    }
+</script>
+```
+
+</body>
+</html>
